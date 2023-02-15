@@ -1,11 +1,14 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { string } from 'prop-types';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { string, shape } from 'prop-types';
 
 export default function CircleButton(props) {
-  const { children } = props;
+  // eslint-disable-next-line react/prop-types
+  const { children, style } = props;
   return (
-    <View style={styles.circleButton}>
+    <View style={[styles.circleButton, style]}>
       <Text style={styles.circleButtonlabel}>{children}</Text>
     </View>
   );
@@ -13,7 +16,12 @@ export default function CircleButton(props) {
 
 CircleButton.props = {
   children: string.isRequired,
+  style: shape(),
 };
+
+CircleButton.defaultProps = {
+  style: null,
+}
 
 const styles = StyleSheet.create({
   circleButton: {
